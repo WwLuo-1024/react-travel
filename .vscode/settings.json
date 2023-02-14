@@ -1,0 +1,6 @@
+
+//配置typescript的SDK
+{
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "typescript.enablePromptUseWorkspaceTsdk": true
+}

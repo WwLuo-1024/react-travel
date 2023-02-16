@@ -29,6 +29,18 @@ function App() {
         sideImage = {sideImage}
         products = {productList1}
         ></ProductCollection>
+
+        <ProductCollection
+        title = {<Typography.Title level = {3} type = "danger">新品上市</Typography.Title>}
+        sideImage = {sideImage2}
+        products = {productList2}
+        ></ProductCollection>
+
+        <ProductCollection
+        title = {<Typography.Title level = {3} type = "success">国内游推荐</Typography.Title>}
+        sideImage = {sideImage3}
+        products = {productList3}
+        ></ProductCollection>
       </div>
       <Footer />
     </div>

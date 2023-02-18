@@ -13,9 +13,9 @@ export const ProductImage: React.FC<PropsType> = ({id, size, imageSrc, price, ti
     return (
       <>
         {size == "large" ? (
-          <Image src={imageSrc} height={285} width={610} />
+          <Image src={imageSrc} height={285} width={493} />
         ) : (
-          <Image src={imageSrc} height={120} width={305} />
+          <Image src={imageSrc} height={120} width={245} />
         )}
         <div>
           <Typography.Text type="secondary">

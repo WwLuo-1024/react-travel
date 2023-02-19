@@ -15,10 +15,10 @@ export const SideMenu: React.FC = () =>{
             label:sm.title, 
             icon:<GifOutlined/>,
             key: sm.title,
-                children:m.subMenu.map((sms)=>({
-                label:sms.title, 
+                children:sm.subMenu.map((sms)=>({
+                label:sms, 
                 icon:<GifOutlined/>,
-                key: sms.title,
+                key: sms,
                 })),
              })),
         }))}

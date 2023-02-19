@@ -12,6 +12,7 @@ console.log(productList1)
 
 export class HomePage extends React.Component{
     render() : React.ReactNode{
+      // console.log(this.props.navigate)
         return(
             <>
             <Header />
@@ -51,3 +52,5 @@ export class HomePage extends React.Component{
         )
     }
 }
+
+// export const HomePage = withRouter(HomePageComponent)

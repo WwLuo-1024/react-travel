@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Header.module.css"
 import logo from '../../assets/logo.svg';
-import {Layout, Typography, Input, Button, Dropdown, MenuProps, Menu} from "antd" //title属于Typography子组件
+import {Layout, Typography, Input, Button, Dropdown, MenuProps, Menu, message} from "antd" //title属于Typography子组件
 import { GlobalOutlined } from "@ant-design/icons"
 import ButtonGroup from 'antd/es/button/button-group';
 import { RouterComponentProps, withRouter } from '../../helpers/withRouter'
@@ -13,6 +13,7 @@ import { languageState } from "../../redux/languageReducer"
 //   language: "zh" | "en",
 //   languageList: {name: string; code: string}[];
 // }
+
 
 interface State extends languageState{}
 
@@ -31,11 +32,28 @@ class HeaderComponent extends React.Component<RouterComponentProps, State>{
   
     render(){
     const {navigate} = this.props;
-    var items: MenuProps['items'] = this.state.languageList.map((l) =>{
+    const items: MenuProps['items'] = this.state.languageList.map((l) =>{
       return{
         key: l.code, label: l.name
       }
     })
+    const handleMenuClick: MenuProps['onClick'] = (e) => {
+      message.info('Language Changed');
+      console.log('click', e);
+      
+      //dispatch announce store to update data
+      const action = {
+        type: "change_language",
+        payload: e.key,
+      };
+
+      store.dispatch(action)
+    };
+
+    const menuProps = {
+      items,
+      onClick:handleMenuClick
+    }
     return(
         <div className={styles['app-header']}>
         {/* top-header */}
@@ -46,7 +64,7 @@ class HeaderComponent extends React.Component<RouterComponentProps, State>{
             {this.state.language === "zh" ? "中文" : "English"}
           </Dropdown.Button> */}
 
-          <Dropdown.Button menu={{ items }} style={{marginLeft: 15, display: 'inline'}} icon={<GlobalOutlined />} >
+          <Dropdown.Button menu={ menuProps } style={{marginLeft: 15, display: 'inline'}} icon={<GlobalOutlined />} >
             {this.state.language === "zh" ? "中文" : "English"}
           </Dropdown.Button>
 

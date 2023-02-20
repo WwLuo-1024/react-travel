@@ -20,36 +20,60 @@ interface State extends languageState{}
 class HeaderComponent extends React.Component<RouterComponentProps, State>{
     constructor(props){
       super(props);
-
       const storeState = store.getState();
       // storeState.language
       // storeState.languageList
       this.state = {
         language: storeState.language,
         languageList: storeState.languageList
-      }
+      };
+      
+      //store subscribe
+      store.subscribe(this.handlesStoreChange);
+    }
+
+    handlesStoreChange = ()=>{
+      const storeState = store.getState();
+        this.setState({
+          language: storeState.language,
+          languageList: storeState.languageList
+        });
     }
   
     render(){
     const {navigate} = this.props;
-    const items: MenuProps['items'] = this.state.languageList.map((l) =>{
+    
+    //menu items
+    const items: MenuProps['items'] = [...this.state.languageList.map((l) =>{
       return{
         key: l.code, label: l.name
       }
-    })
+    }), {key: "new", label:"添加新语言"}]
+
+    //menuClick
     const handleMenuClick: MenuProps['onClick'] = (e) => {
       message.info('Language Changed');
       console.log('click', e);
-      
-      //dispatch announce store to update data
-      const action = {
-        type: "change_language",
-        payload: e.key,
-      };
 
-      store.dispatch(action)
+      //[Action] dispatch announce store to update data
+      if(e.key === "new"){
+        const action ={
+          type:"add_language",
+          payload: {code:"new_lang", name:"新语言"},
+        }
+        store.dispatch(action)
+      }else{
+        const action = {
+          type: "change_language",
+          payload: e.key,
+        };
+        store.dispatch(action)
+      }
+      
+      
     };
 
+    //menuProps
     const menuProps = {
       items,
       onClick:handleMenuClick

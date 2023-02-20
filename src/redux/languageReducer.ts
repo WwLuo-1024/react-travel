@@ -15,10 +15,13 @@ const defaultState: languageState = {
 
 export default (state = defaultState, action) =>{
     console.log(state, action)
-    if(action.type === "change_language"){
-        const newState = {...state, language:action.payload} //根据redux规则 数据state是immutable 需要创建新对象来处理
-        //其中...为展开运算符
-        return newState;
+    switch(action.type){
+        case "change_language":
+            return {...state, language:action.payload} //根据redux规则 数据state是immutable 需要创建新对象来处理
+            //其中...为展开运算符
+        case "add_language":
+            return {...state, languageList: [...state.languageList, action.payload]}
+        default: 
+            return state
     }
-    return state;
 }

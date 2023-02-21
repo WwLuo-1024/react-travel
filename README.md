@@ -38,10 +38,6 @@ Not completed
 
 Not completed
 
-## Badge
-
-Not completed
-
 ## demo
 Not completed
 <!-- To see how the specification has been applied, see the [example-readmes](example-readmes/). -->

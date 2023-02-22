@@ -36,7 +36,7 @@ $ npm start
 # Local Host Port:3000
 ```
 
-## demo
+## Demo
 Not completed
 <!-- To see how the specification has been applied, see the [example-readmes](example-readmes/). -->
 

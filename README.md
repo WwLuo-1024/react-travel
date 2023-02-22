@@ -5,7 +5,7 @@ The ALLWELL Travel website is an online travel platform developed by React18. It
 ## Table of Contents
 
 - [TodoList](#to-do-list)
-- [Install](#install)
+- [Dev Environments](#dev-environments)
 - [Demo](#demo)
 - [Related Efforts](#related-efforts)
 - [Maintainers](#maintainers)

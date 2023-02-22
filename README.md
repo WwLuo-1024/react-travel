@@ -16,7 +16,7 @@ The ALLWELL Travel website is an online travel platform developed by React18. It
 - [x] react-router handles public and private routes
 - [x] Ant design4 implements page componentized architecture
 - [x] i18n International processing
-- [x] RESTful API to obtain back-end data
+- [ ] RESTful API to obtain back-end data
 - [ ] redux-persist for website state persistence
 - [ ] eject and configure Webpack Containerisation and Docker Deployment and Go Live
 

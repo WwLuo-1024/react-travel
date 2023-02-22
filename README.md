@@ -20,13 +20,21 @@ The ALLWELL Travel website is an online travel platform developed by React18. It
 - [ ] eject and configure Webpack Containerisation and Docker Deployment and Go Live
 
 
-## Install
+## Dev Environments
 
-Not completed
+1. Node18
+2. React18 
+3. TypeScript 4.9.4
+4. Redux 4.2.0
+5. Antd 5.2.2
 
 ## Usage
 
-Not completed
+Terminal
+```sh
+$ npm start
+# Local Host Port:3000
+```
 
 ## demo
 Not completed

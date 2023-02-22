@@ -2,26 +2,23 @@
 
 The ALLWELL Travel website is an online travel platform developed by React18. It aims to provide users with travel route planning (domestic and overseas), personalisation of private tours and so on. It also provides various information such as hotel photos, photos of sights, hotel phone numbers, hotel addresses and hotel reviews from real users to facilitate the user's choice.
 
-
-
 ## Table of Contents
 
-- [Background](#background)
+- [TodoList](#todolist)
 - [Install](#install)
 - [Demo](#demo)
 - [Related Efforts](#related-efforts)
 - [Maintainers](#maintainers)
 
-## Background
+## TO DO List
+- [x] create-react-app Build a TS-based runtime environment
+- [x] react-redux implements global management of website state
+- [x] react-router handles public and private routes
+- [x] Ant design4 implements page componentized architecture
+- [x] i18n International processing
+- [ ] redux-persist for website state persistence
+- [ ] eject and configure Webpack Containerisation and Docker Deployment and Go Live
 
-
-The goals for this repository are:
-
-1. 
-2. 
-3. 
-4. 
-5. 
 
 ## Install
 

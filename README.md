@@ -19,6 +19,7 @@ Technologies in this project
 
 - [TodoList](#to-do-list)
 - [Dev Environments](#dev-environments)
+- [Useage](#useage)
 - [Demo](#demo)
 - [Related Efforts](#related-efforts)
 - [Maintainers](#maintainers)

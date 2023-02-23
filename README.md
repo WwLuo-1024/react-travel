@@ -1,44 +1,57 @@
-# Standard Readme
+# ALLWELL Online Travel
 
-
-This repository contains:
-
-1. 
-2. 
-3. 
-4. 
-5. 
-
-
+The ALLWELL Travel website is an online travel platform developed by React18. It aims to provide users with travel route planning (domestic and overseas), personalisation of private tours and so on. It also provides various information such as hotel photos, photos of sights, hotel phone numbers, hotel addresses and hotel reviews from real users to facilitate the user's choice.
+<br />
+<br />
+Technologies in this project
+<br />
+<br />
+<img align="left" alt="React" width="40px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/react/react.png" />
+<img align="left" alt="Visual Studio Code" width="40px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/visual-studio-code/visual-studio-code.png" />
+<img align="left" alt="HTML5" width="40px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/html/html.png" />
+<img align="left" alt="CSS3" width="40px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/css/css.png" />
+<img align="left" alt="JavaScript" width="40px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/javascript/javascript.png" />
+<img align="left" alt="TypeScript" width="40px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/typescript/typescript.png" />
+<br />
+<br />
 
 ## Table of Contents
 
-- [Background](#background)
-- [Install](#install)
+- [TodoList](#to-do-list)
+- [Dev Environments](#dev-environments)
+- [Usage](#usage)
 - [Demo](#demo)
 - [Related Efforts](#related-efforts)
 - [Maintainers](#maintainers)
 
-## Background
+## TO DO List
+- [x] create-react-app Build a TS-based runtime environment
+- [x] react-redux implements global management of website state
+- [x] react-router handles public and private routes
+- [x] Ant design4 implements page componentized architecture
+- [x] i18n International processing
+- [ ] RESTful API to obtain back-end data
+- [ ] redux-persist for website state persistence
+- [ ] eject and configure Webpack Containerisation and Docker Deployment and Go Live
 
 
-The goals for this repository are:
+## Dev Environments
 
-1. 
-2. 
-3. 
-4. 
-5. 
-
-## Install
-
-Not completed
+1. Node18
+2. React18 
+3. TypeScript 4.9.4
+4. Redux 4.2.0
+5. Antd 5.2.2
 
 ## Usage
 
-Not completed
+Terminal
+```sh
+$ npm start
+# Local Host Port:3000
+```
 
-## demo
+## Demo
 Not completed
 <!-- To see how the specification has been applied, see the [example-readmes](example-readmes/). -->
 

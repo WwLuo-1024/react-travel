@@ -7,5 +7,5 @@ export const changeLanguage: Middleware = (store) =>(next) =>(action) =>{
         i18n.changeLanguage(action.payload);
     }
     next(action)
-    console.log("Language Changed")
+    console.log("Language Changed!")
 }

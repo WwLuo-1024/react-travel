@@ -12,7 +12,7 @@ import { withTranslation, WithTranslation } from "react-i18next"
 import axios from "axios";
 import { connect } from "react-redux";
 import { RootState } from "../../redux/store";
-import { fetchRecommendProductStartActionCreater, fetchRecommendProductFailActionCreater, fetchRecommendProductSuccessActionCreater } from "../../redux/recommendProducts/recommendProductsActions";
+import { giveMeDataActionCreater } from "../../redux/recommendProducts/recommendProductsActions";
  
 // console.log(productList1)
 
@@ -30,16 +30,10 @@ const mapStateToProps = (state: RootState)=>{
   }
 }
 
-const mapDispatchToProps = (dispatch) =>{
+const mapDispatchToProps = (dispatch) =>{ //映射关系
   return{
-    fetchStart: ()=>{
-      dispatch(fetchRecommendProductStartActionCreater())
-    },
-    fetchSuccess: (data) =>{
-      dispatch(fetchRecommendProductSuccessActionCreater(data))
-    },
-    fetchFail: (error)=>{
-      dispatch(fetchRecommendProductFailActionCreater(error))
+    giveMeData: () =>{
+      dispatch(giveMeDataActionCreater)
     }
   }
 };
@@ -58,25 +52,8 @@ class HomePageComponent extends React.Component<PropsType>{
   //   }
   // }
 
-  async componentDidMount(){
-    this.props.fetchStart()
-    try{
-      const {data} = await axios.get("http://123.56.149.216:8080/api/productCollections" //axios.get本身是Promise
-      // headers:{ 局部请求需改为全局请求
-      //   "x-icode" : "5BFE3F36A4F04F4E",
-      // },
-      );
-    this.props.fetchSuccess(data)
-    // this.setState({
-    //   loading: false,
-    //   productList:data,
-    //   error: null
-    // })
-    }catch(error){
-      if(error instanceof Error){
-        this.props.fetchFail(error.message)
-      }
-    }
+    componentDidMount(){
+      this.props.giveMeData();
   }
 
 

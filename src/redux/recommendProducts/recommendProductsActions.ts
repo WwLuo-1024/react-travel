@@ -1,3 +1,7 @@
+import { ThunkAction } from "redux-thunk/es/types";
+import { RootState } from "../store";
+import axios from 'axios'
+
 export const FETCH_RECOMMEND_PRODUCTS_START = "FETCH_RECOMMEND_PRODUCTS_START"; //API call start
 export const FETCH_RECOMMEND_PRODUCTS_SUCCESS = "FETCH_RECOMMEND_PRODUCTS_SUCCESS"; //API call successful
 export const FETCH_RECOMMEND_PRODUCTS_FAIL = "FETCH_RECOMMEND_PRODUCTS_FAIL"; //API call fail
@@ -37,3 +41,18 @@ export const fetchRecommendProductFailActionCreater = (error): FetchRecommendPro
         payload: error
     }
 };
+
+export const giveMeDataActionCreater = ():ThunkAction<
+void, RootState, undefined, RecommendProductAction
+> =>async (dispatch, getState) =>{
+    dispatch(fetchRecommendProductStartActionCreater())
+    try{
+      const {data} = await axios.get("http://123.56.149.216:8080/api/productCollections" //axios.get本身是Promise
+      );
+    dispatch(fetchRecommendProductSuccessActionCreater(data))
+    }catch(error){
+      if(error instanceof Error){
+    dispatch(fetchRecommendProductFailActionCreater(error.message))
+      }
+    }
+}//void 没有任何数据的输出 函数

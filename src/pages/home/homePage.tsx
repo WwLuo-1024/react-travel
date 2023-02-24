@@ -3,51 +3,78 @@ import styles from './homePage.module.css'
 
 import { Header, Footer, Carousel, SideMenu, ProductCollection, BusinessPartner} from "../../components"
 import { Row, Col, Typography, Spin } from 'antd';
-import {productList1, productList2, productList3} from './mockups'
+// import {productList1, productList2, productList3} from './mockups'
 import sideImage from '../../assets/images/sider_2019_12-09.png'
 import sideImage2 from '../../assets/images/sider_2019_02-04.png'
 import sideImage3 from '../../assets/images/sider_2019_02-04-2.png'
 import { withTranslation, WithTranslation } from "react-i18next"
 //withTranslation是高阶组件 WithTranslation是typeScript类型定义
 import axios from "axios";
+import { connect } from "react-redux";
+import { RootState } from "../../redux/store";
+import { fetchRecommendProductStartActionCreater, fetchRecommendProductFailActionCreater, fetchRecommendProductSuccessActionCreater } from "../../redux/recommendProducts/recommendProductsActions";
  
-console.log(productList1)
+// console.log(productList1)
 
-interface State{
-  loading: boolean, //用于处理UI渲染前悬空数据 此时API数据还没被挂载
-  productList: any[], //用于处理加载数据失败的情况
-  error: string | null
+// interface State{
+//   loading: boolean, //用于处理UI渲染前悬空数据 此时API数据还没被挂载
+//   productList: any[], //用于处理加载数据失败的情况
+//   error: string | null
+// }
+
+const mapStateToProps = (state: RootState)=>{
+  return{
+    loading: state.recommendProducts.loading,
+    error: state.recommendProducts.error,
+    productList: state.recommendProducts.productList
+  }
 }
 
-
-
-class HomePageComponent extends React.Component<WithTranslation, State>{
-
-  constructor(props){
-    super(props);
-    this.state = {
-      loading: true,
-      error: null, 
-      productList: [],
+const mapDispatchToProps = (dispatch) =>{
+  return{
+    fetchStart: ()=>{
+      dispatch(fetchRecommendProductStartActionCreater())
+    },
+    fetchSuccess: (data) =>{
+      dispatch(fetchRecommendProductSuccessActionCreater(data))
+    },
+    fetchFail: (error)=>{
+      dispatch(fetchRecommendProductFailActionCreater(error))
     }
   }
+};
+
+type PropsType = WithTranslation & ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>
+
+
+class HomePageComponent extends React.Component<PropsType>{
+
+  // constructor(props){
+  //   super(props);
+  //   this.state = {
+  //     loading: true,
+  //     error: null, 
+  //     productList: [],
+  //   }
+  // }
 
   async componentDidMount(){
+    this.props.fetchStart()
     try{
       const {data} = await axios.get("http://123.56.149.216:8080/api/productCollections" //axios.get本身是Promise
       // headers:{ 局部请求需改为全局请求
       //   "x-icode" : "5BFE3F36A4F04F4E",
       // },
       );
-
-    this.setState({
-      loading: false,
-      productList:data,
-      error: null
-    })
+    this.props.fetchSuccess(data)
+    // this.setState({
+    //   loading: false,
+    //   productList:data,
+    //   error: null
+    // })
     }catch(error){
       if(error instanceof Error){
-        this.setState({error:error.message, loading: false})
+        this.props.fetchFail(error.message)
       }
     }
   }
@@ -55,8 +82,8 @@ class HomePageComponent extends React.Component<WithTranslation, State>{
 
     render() : React.ReactNode{
       // console.log(this.props.navigate)
-      const {t} = this.props
-      const { productList, loading, error } = this.state
+      const {t, productList, loading, error} = this.props
+
       if(loading){
         return <Spin 
         size = "large"
@@ -111,5 +138,5 @@ class HomePageComponent extends React.Component<WithTranslation, State>{
     }
 }
 
-export const HomePage = withTranslation()(HomePageComponent) //第一个括号是命名空间 第二个括号是组件
+export const HomePage = connect(mapStateToProps,mapDispatchToProps)(withTranslation()(HomePageComponent)) //第一个括号是命名空间 第二个括号是组件
 // export const HomePage = withRouter(HomePageComponent)

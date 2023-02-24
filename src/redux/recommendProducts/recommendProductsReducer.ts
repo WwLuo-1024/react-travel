@@ -23,8 +23,5 @@ export default (state = defaultState, action: RecommendProductAction) => { //red
         default:
             return state
     }
-
-
-    return state;
 }
 

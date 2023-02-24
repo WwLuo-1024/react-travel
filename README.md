@@ -52,6 +52,13 @@ $ npm start
 ```
 
 ## Demo
+<div align="center">
+    <img src="demo/image001.png" width="800">
+    <img src="demo/image002.png" width="800">
+    <img src="demo/image003.png" width="800">
+</div>
+
+Ongoing Updates
 Not completed
 <!-- To see how the specification has been applied, see the [example-readmes](example-readmes/). -->
 

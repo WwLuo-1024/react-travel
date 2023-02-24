@@ -33,7 +33,7 @@ const mapStateToProps = (state: RootState)=>{
 const mapDispatchToProps = (dispatch) =>{ //映射关系
   return{
     giveMeData: () =>{
-      dispatch(giveMeDataActionCreater)
+      dispatch(giveMeDataActionCreater())
     }
   }
 };

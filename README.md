@@ -58,7 +58,7 @@ $ npm start
     <img src="demo/image003.png" width="800">
 </div>
 
-<div align="center">Ongoing Updating<div/>
+<div align="center">Ongoing Updating</div>
 <!-- To see how the specification has been applied, see the [example-readmes](example-readmes/). -->
 
 ## Related Efforts

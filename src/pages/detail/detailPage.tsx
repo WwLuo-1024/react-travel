@@ -3,7 +3,9 @@ import styles from './detailPage.module.css'
 import { useParams } from 'react-router-dom'
 import axios from "axios";
 import { Spin, Row, Col, DatePicker, Space, Divider, Typography  } from "antd";
-import { Header, Footer, ProductIntro} from "../../components";
+import { Header, Footer, ProductIntro, ProductComments} from "../../components";
+import { commentMockData } from "./mockup";
+
 
 //针对多参数传入 构建一下type
    type MatchParams = {
@@ -103,7 +105,14 @@ export const DetailPage: React.FC = () =>{
             <div dangerouslySetInnerHTML={{__html:product.notes}} style={{margin:80}}></div>
             </div>
             {/* 商品评价 */}
-            <div id="comments" className={styles["product-detail-container"]}></div>
+            <div id="comments" className={styles["product-detail-container"]}>
+            <Divider orientation={'center'}>
+                <Typography.Title level={3}>商品评价</Typography.Title>
+            </Divider>
+            <div style={{margin:40}}>
+                <ProductComments data={commentMockData}/>
+            </div>
+            </div>
         </div>
         <Footer />
         </>

@@ -1,7 +1,7 @@
 import React from "react";
 import styles from './homePage.module.css'
 
-import { Header, Footer, Carousel, SideMenu, ProductCollection, BusinessPartner} from "../../components"
+import { Header, Footer, Carousel, SideMenu, ProductCollection, BusinessPartners} from "../../components"
 import { Row, Col, Typography, Spin } from 'antd';
 // import {productList1, productList2, productList3} from './mockups'
 import sideImage from '../../assets/images/sider_2019_12-09.png'
@@ -107,7 +107,7 @@ class HomePageComponent extends React.Component<PropsType>{
         sideImage = {sideImage3}
         products = {productList[2].touristRoutes}
         ></ProductCollection>
-        <BusinessPartner />
+        <BusinessPartners />
       </div>
       <Footer />
             </>

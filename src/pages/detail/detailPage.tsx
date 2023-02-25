@@ -3,7 +3,7 @@ import styles from './detailPage.module.css'
 import { useParams } from 'react-router-dom'
 import axios from "axios";
 import { Spin, Row, Col, DatePicker, Space  } from "antd";
-import { Header, Footer} from "../../components";
+import { Header, Footer, ProductIntro} from "../../components";
 
 //针对多参数传入 构建一下type
    type MatchParams = {
@@ -63,7 +63,16 @@ export const DetailPage: React.FC = () =>{
             <div className={styles["product-intro-container"]}>
                 <Row>
                     <Col span={13}>
-                        
+                        <ProductIntro 
+                        title={product.title}
+                        shortDescription={product.description}
+                        price={product.originalPrice}
+                        coupons={product.coupons}
+                        points={product.points}
+                        discount={product.price}
+                        rating={product.rating}
+                        pictures={product.touristRoutePictures.map((p =>p.url))}
+                        />
                     </Col>
                     <Col span={11}>
                         <RangePicker open style={{marginTop: 20}}/>

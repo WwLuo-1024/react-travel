@@ -116,8 +116,15 @@ export const ProductIntro: React.FC<PropsType> = ({
                 {pictures.map(p => <Image height={150} src={p}/>)}
             </Carousel>
 
-            <Table<RowType> columns={columns} dataSource={tableDataSource}/>
+            <Table<RowType> 
+            columns={columns} 
+            dataSource={tableDataSource}
+            size = "small"
+            bordered={false}
+            pagination={false}
+            />
 
+            
         </div>
     )
 }

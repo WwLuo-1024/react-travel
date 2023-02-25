@@ -5,9 +5,9 @@ import axios from "axios";
 import { Spin, Row, Col, DatePicker, Space, Divider, Typography, Anchor, Menu } from "antd";
 import { Header, Footer, ProductIntro, ProductComments } from "../../components";
 import { commentMockData } from "./mockup";
-import { productDetailSlice } from "../../redux/productDetail/slice";
-import { useSelector } from "../../redux/hooks";
-import { useDispatch } from "react-redux";
+import { productDetailSlice, getProductDetail } from "../../redux/productDetail/slice";
+import { useSelector, useAppDispatch } from "../../redux/hooks";
+// import { useDispatch } from "react-redux";
 
 //针对多参数传入 构建一下type
 type MatchParams = {
@@ -33,24 +33,16 @@ export const DetailPage: React.FC = () => {
     const error = useSelector(state => state.productDetail.error)
     const product = useSelector(state => state.productDetail.data)
 
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
     useEffect(() => {
-        const fetchData = async () => {
-            // setLoading(true)
-            dispatch(productDetailSlice.actions.fetchStart())
-            try {
-                const { data } = await axios.get(`http://123.56.149.216:8080/api/touristRoutes/${touristRouteId}`);
-                // setProduct(data)
-                // setLoading(false)
-                dispatch(productDetailSlice.actions.fetchSuccess(data))
-            } catch (error) {
-                // setError(error instanceof Error? error.message : "error")
-                // setLoading(false)
-                dispatch(productDetailSlice.actions.fetchFail(error instanceof Error ? error.message : "error"))
-            }
-        };
-        fetchData()
+        // const fetchData = async () => {
+
+        // };
+        // fetchData()
+        if (touristRouteId) {
+            dispatch(getProductDetail(touristRouteId)) //需要创建自定义dispatch hook
+        }
     }, []) //页面初始化数据只调用一次，第二个参数为空数组
 
     if (loading) {

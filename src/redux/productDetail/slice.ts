@@ -1,6 +1,7 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction, createAsyncThunk  } from "@reduxjs/toolkit";
+import axios from "axios";
 
-interface ProductDetailState{
+interface ProductDetailState {
     loading: boolean;
     error: string | null;
     data: any;
@@ -11,6 +12,24 @@ const initialState: ProductDetailState = {
     error: null,
     data: null
 }
+
+export const getProductDetail = createAsyncThunk(
+    "productDetail/getProductDetail",
+    async (touristRouteId: string, thunkAPI) => {
+        // setLoading(true)
+        thunkAPI.dispatch(productDetailSlice.actions.fetchStart())
+        try {
+            const { data } = await axios.get(`http://123.56.149.216:8080/api/touristRoutes/${touristRouteId}`);
+            // setProduct(data)
+            // setLoading(false)
+            thunkAPI.dispatch(productDetailSlice.actions.fetchSuccess(data))
+        } catch (error) {
+            // setError(error instanceof Error? error.message : "error")
+            // setLoading(false)
+            thunkAPI.dispatch(productDetailSlice.actions.fetchFail(error instanceof Error ? error.message : "error"))
+        }
+    }
+)
 
 export const productDetailSlice = createSlice({
     name: "productDetail", //命名空间
@@ -28,7 +47,7 @@ export const productDetailSlice = createSlice({
             state.loading = false; //请求结束
             state.error = null;
         },
-        fetchFail: (state, action: PayloadAction<string|null>) => {
+        fetchFail: (state, action: PayloadAction<string | null>) => {
             state.loading = false;
             state.error = action.payload;
         }

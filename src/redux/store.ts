@@ -6,6 +6,7 @@ import { actionLog } from "./middlewares/actionLog";
 import { changeLanguage } from "./middlewares/changeLanguage";
 import { productDetailSlice } from  './productDetail/slice';
 import { combineReducers, configureStore } from "@reduxjs/toolkit"
+import { getDefaultMiddleware } from "@reduxjs/toolkit/dist/getDefaultMiddleware";
 
 const rootReducer = combineReducers({ //The combination root reducer
     language: languageReducer,
@@ -13,8 +14,12 @@ const rootReducer = combineReducers({ //The combination root reducer
     productDetail: productDetailSlice.reducer
 })
 
-const store = createStore(rootReducer, applyMiddleware(thunk, actionLog, changeLanguage));
-
+// const store = createStore(rootReducer, applyMiddleware(thunk, actionLog, changeLanguage));
+const store = configureStore({
+    reducer: rootReducer,
+    middleware: (getDefaultMiddleware) =>getDefaultMiddleware().concat(actionLog, changeLanguage, thunk),
+    devTools: true,
+})
 export type RootState = ReturnType<typeof store.getState>
-
+export type AppDispatch = typeof store.dispatch; //10.7
 export default store;

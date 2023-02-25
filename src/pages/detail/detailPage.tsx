@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import styles from './detailPage.module.css'
 import { useParams } from 'react-router-dom'
 import axios from "axios";
-import { Spin, Row, Col, DatePicker, Space  } from "antd";
+import { Spin, Row, Col, DatePicker, Space, Divider, Typography  } from "antd";
 import { Header, Footer, ProductIntro} from "../../components";
 
 //针对多参数传入 构建一下type
@@ -82,11 +82,26 @@ export const DetailPage: React.FC = () =>{
             {/* 锚点菜单 */}
             <div className={styles["product-detail-anchor"]}></div>
             {/* 产品特色 */}
-            <div id="feature" className={styles["product-detail-container"]}></div>
+            <div id="feature" className={styles["product-detail-container"]}>
+                <Divider orientation={'center'}>
+                    <Typography.Title level={3}>产品特色</Typography.Title>
+                </Divider>
+                <div dangerouslySetInnerHTML={{__html:product.features}} style={{margin:160}}></div>
+            </div>
             {/* 费用 */}
-            <div id="fees" className={styles["product-detail-container"]}></div>
+            <div id="fees" className={styles["product-detail-container"]}>
+            <Divider orientation={'center'}>
+                <Typography.Title level={3}>产品费用</Typography.Title>
+            </Divider>
+            <div dangerouslySetInnerHTML={{__html:product.fees}} style={{margin:80}}></div>
+            </div>
             {/* 预订须知 */}
-            <div id="notes" className={styles["product-detail-container"]}></div>
+            <div id="notes" className={styles["product-detail-container"]}>
+            <Divider orientation={'center'}>
+                <Typography.Title level={3}>预订须知</Typography.Title>
+            </Divider>
+            <div dangerouslySetInnerHTML={{__html:product.notes}} style={{margin:80}}></div>
+            </div>
             {/* 商品评价 */}
             <div id="comments" className={styles["product-detail-container"]}></div>
         </div>

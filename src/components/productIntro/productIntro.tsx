@@ -108,7 +108,7 @@ export const ProductIntro: React.FC<PropsType> = ({
                 </Typography.Text>
 
                 <Typography.Text style={{marginLeft:50}}>
-                    ￥<span className={styles["intro-detail-strong-text"]}>{rating}</span> /分
+                    <span className={styles["intro-detail-strong-text"]}>{rating}</span> /分
                 </Typography.Text>
             </div>
 
@@ -124,7 +124,7 @@ export const ProductIntro: React.FC<PropsType> = ({
             pagination={false}
             />
 
-            
+
         </div>
     )
 }

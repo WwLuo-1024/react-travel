@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { act } from "react-dom/test-utils";
 
 interface ProductSearchState {
     loading: boolean;
@@ -17,15 +16,14 @@ const initialState: ProductSearchState = {
 }
 
 export const searchProduct = createAsyncThunk(
-    "productSearch/getProductSearch",
+    "productSearch/searchProduct",
     async (parameters: {
-        keywords: string,
+        keywords: string | null,
         nextPage: number | string,
         pageSize: number | string,
     }, thunkAPI) => {
         let url = `http://123.56.149.216:8080/api/touristRoutes?pageNumber=${parameters.nextPage}&pageSize=${parameters.pageSize}`
         if (parameters.keywords) {
-            console.log(parameters.keywords)
             url += `&keyword=${parameters.keywords}`;
         }
         const response = await axios.get(url)
@@ -39,7 +37,9 @@ export const searchProduct = createAsyncThunk(
 export const productSearchSlice = createSlice({
     name: "productSearch",
     initialState,
-    reducers: {},
+    reducers: {
+
+    },
     extraReducers: {
         [searchProduct.pending.type]: (state) => { //开始请求
             state.loading = true;

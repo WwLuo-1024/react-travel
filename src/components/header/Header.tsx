@@ -58,6 +58,15 @@ export const Header: React.FC = () =>{
       onClick:handleMenuClick
     }
 
+    const searchHandler = (event) =>{
+      console.log(event)
+      if(event){
+        navigate("/search/" + event)
+      }else{
+        navigate("/search/" + "法国")
+      }
+    }
+
 
 
 
@@ -89,7 +98,7 @@ export const Header: React.FC = () =>{
           <Input.Search
           placeholder={"请输入旅游目的地、主题、或关键字"}
           className={styles["search-input"]}
-          onSearch={(keyword) => navigate("/search/" + keyword)}
+          onSearch={searchHandler}
         />
 
         </Layout.Header>

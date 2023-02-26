@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './App.module.css';
-import { HomePage, SignInPage, RegisterPage, DetailPage } from './pages';
+import { HomePage, SignInPage, RegisterPage, DetailPage, SearchPage } from './pages';
 import {  BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -12,6 +12,7 @@ function App() {
           <Route path='/signin' element={<SignInPage />} />
           <Route path='/register' element={<RegisterPage />} />
           <Route path='/detail/:touristRouteId' element={<DetailPage />} />
+          <Route path='/search/:keywords' element={<SearchPage />} />
           {/*当页面url不存在时 输出以下页面 */}
           <Route path='*' element={<h1>404 not found</h1>} />
         </Routes>

@@ -1,6 +1,6 @@
 import React from "react";
 import styles from './searchPage.module.css'
-import { Header, Footer } from "../../components";
+import { Header, Footer, FilterArea, ProductList } from "../../components";
 
 export const SearchPage: React.FC = () =>{
     return(
@@ -8,9 +8,13 @@ export const SearchPage: React.FC = () =>{
             <Header />
             <div className={styles["page-content"]}>
             {/* 分类过滤器 */}
-            <div className={styles["product-list-container"]}></div>
+            <div className={styles["product-list-container"]}>
+                <FilterArea />
+            </div>
             {/* 产品列表 */}
-            <div className={styles["product-list-container"]}></div>
+            <div className={styles["product-list-container"]}>
+                <ProductList />
+            </div>
             </div>
             <Footer />
         </>

@@ -86,10 +86,11 @@ export const Header: React.FC = () =>{
           <Typography.Title level={3} className={styles.title}>{t("header.title")}</Typography.Title>
           </span>
           
-          <Input.Search 
-          placeholder={'请输入旅游目的地、主题、或关键字'}
-          className={styles['search-input']} 
-          onSearch={(keyword)=> navigate("/search/" + keyword)}/>
+          <Input.Search
+          placeholder={"请输入旅游目的地、主题、或关键字"}
+          className={styles["search-input"]}
+          onSearch={(keyword) => navigate("/search/" + keyword)}
+        />
 
         </Layout.Header>
         <Menu mode={"horizontal"} className={styles['main-menu']}

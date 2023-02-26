@@ -3,7 +3,7 @@ import styles from './searchPage.module.css'
 import { Header, Footer, FilterArea, ProductList } from "../../components";
 import { useParams, useLocation } from "react-router-dom"; //获取URL中的参数keyword
 import { Spin } from "antd";
-import { getProductSearch } from "../../redux/productSearch/slice";
+import { searchProduct } from "../../redux/productSearch/slice";
 import { useSelector, useAppDispatch } from "../../redux/hooks"; //useSelector连接redux中的State（分别获取loading，data，pagination， error）
 
 type MatchParams = {
@@ -24,13 +24,13 @@ export const SearchPage: React.FC = () => {
 
     useEffect(() => {
         if (keywords) {
-            dispatch(getProductSearch({ nextPage: 1, pageSize: 10, keywords }))
+            dispatch(searchProduct({ nextPage: 1, pageSize: 10, keywords }))
         }
     }, [location])
 
     const onPageChange = (nextPage, pageSize) => {
         if (keywords) {
-            dispatch(getProductSearch({ nextPage, pageSize, keywords }))
+            dispatch(searchProduct({ nextPage, pageSize, keywords }))
         }
     }
     {/* 处理网络数据加载 */}

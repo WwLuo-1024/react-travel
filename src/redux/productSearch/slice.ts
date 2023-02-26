@@ -16,15 +16,16 @@ const initialState: ProductSearchState = {
     pagination: null
 }
 
-export const getProductSearch = createAsyncThunk(
+export const searchProduct = createAsyncThunk(
     "productSearch/getProductSearch",
     async (parameters: {
         keywords: string,
         nextPage: number | string,
         pageSize: number | string,
     }, thunkAPI) => {
-        let url = `http://123.56.149.216:8080/api/touristRoutes?pageNumber=${parameters.nextPage}&pageSie=${parameters.pageSize}`
+        let url = `http://123.56.149.216:8080/api/touristRoutes?pageNumber=${parameters.nextPage}&pageSize=${parameters.pageSize}`
         if (parameters.keywords) {
+            console.log(parameters.keywords)
             url += `&keyword=${parameters.keywords}`;
         }
         const response = await axios.get(url)
@@ -40,16 +41,16 @@ export const productSearchSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: {
-        [getProductSearch.pending.type]: (state) => { //开始请求
+        [searchProduct.pending.type]: (state) => { //开始请求
             state.loading = true;
         },
-        [getProductSearch.fulfilled.type]: (state, action) => { //请求成功
+        [searchProduct.fulfilled.type]: (state, action) => { //请求成功
             state.data = action.payload.data;
             state.pagination = action.payload.pagination;
             state.loading = false;
             state.error = null;
         },
-        [getProductSearch.rejected.type]: (state, action: PayloadAction<string | null>) => { //请求失败
+        [searchProduct.rejected.type]: (state, action: PayloadAction<string | null>) => { //请求失败
             state.loading = false;
             state.error = action.payload;
         }

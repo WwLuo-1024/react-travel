@@ -1,8 +1,16 @@
 import React from "react";
 import styles from './searchPage.module.css'
 import { Header, Footer, FilterArea, ProductList } from "../../components";
+import { useParams } from "react-router-dom"; //获取URL中的参数keyword
+
+type MatchParams = {
+    keywords: string
+}
 
 export const SearchPage: React.FC = () =>{
+    
+    const {keywords}  = useParams<MatchParams>();
+    
     return(
         <>
             <Header />

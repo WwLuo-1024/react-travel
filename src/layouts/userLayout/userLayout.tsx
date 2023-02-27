@@ -44,7 +44,7 @@ export const UserLayout: React.FC<PropsTypes> = (props) => {
           {props.children}
         </div>
       </Content>
-      <Footer style={{ textAlign: "center" }}>Footer就不写了，太累了</Footer>
+      <Footer style={{ textAlign: "center" }}>Email: wangluocn@outlook.com Tel: +44 7536339384</Footer>
     </Layout>
   );
 };

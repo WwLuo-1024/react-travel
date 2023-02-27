@@ -5,6 +5,7 @@ import { useParams, useLocation } from "react-router-dom"; //获取URL中的参�
 import { Spin } from "antd";
 import { searchProduct } from "../../redux/productSearch/slice";
 import { useSelector, useAppDispatch } from "../../redux/hooks"; //useSelector连接redux中的State（分别获取loading，data，pagination， error）
+import { MainLayout } from "../../layouts/mainLayout";
 
 type MatchParams = {
     keywords: string
@@ -33,26 +34,26 @@ export const SearchPage: React.FC = () => {
             dispatch(searchProduct({ nextPage, pageSize, keywords }))
         }
     }
-    {/* 处理网络数据加载 */}
-    if(loading){
-        return <Spin 
-        size = "large"
-        style={{
-          marginTop:200,
-          marginBottom: 200,
-          marginLeft: "auto",
-          marginRight: "auto",
-          width: "100%"
-        }}/>
-      }
-      if(error){
+    {/* 处理网络数据加载 */ }
+    if (loading) {
+        return <Spin
+            size="large"
+            style={{
+                marginTop: 200,
+                marginBottom: 200,
+                marginLeft: "auto",
+                marginRight: "auto",
+                width: "100%"
+            }} />
+    }
+    if (error) {
         return <div>网站出错:{error}</div>
-      }
+    }
 
     return (
-        <>
-            <Header />
-            <div className={styles["page-content"]}>
+        <MainLayout>
+            {/* <Header /> */}
+            {/* <div className={styles["page-content"]}> */}
                 {/* 分类过滤器 */}
                 <div className={styles["product-list-container"]}>
                     <FilterArea />
@@ -65,8 +66,8 @@ export const SearchPage: React.FC = () => {
                         onPageChange={onPageChange} //处理用户点击切换页面操作
                     />
                 </div>
-            </div>
-            <Footer />
-        </>
+            {/* </div> */}
+            {/* <Footer /> */}
+        </MainLayout>
     )
 }

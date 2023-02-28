@@ -9,6 +9,8 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit"
 import { getDefaultMiddleware } from "@reduxjs/toolkit/dist/getDefaultMiddleware";
 import { productSearchSlice } from "./productSearch/slice";
 import { userSlice } from "./user/slice";
+import { persistStore, persistReducer } from "redux-persist";
+
 
 
 const rootReducer = combineReducers({ //The combination root reducer

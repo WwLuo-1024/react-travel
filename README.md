@@ -56,6 +56,11 @@ $ npm start
     <img src="demo/image001.png" width="800">
     <img src="demo/image002.png" width="800">
     <img src="demo/image003.png" width="800">
+    <img src="demo/image004.png" width="800">
+    <img src="demo/image005.png" width="800">
+    <img src="demo/image006.png" width="800">
+    <img src="demo/image007.png" width="800">
+    <img src="demo/image008.png" width="800">
 </div>
 
 <div align="center">Ongoing Updating</div>

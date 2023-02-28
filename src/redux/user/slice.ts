@@ -8,7 +8,7 @@ interface userState {
 }
 
 const initialState: userState = {
-    loading: true,
+    loading: false,
     error: null,
     token: null
 }
@@ -31,7 +31,11 @@ export const userSlice = createSlice({
     name: "user", //命名空间
     initialState,
     reducers: {
-
+        logOut: (state)=>{
+            state.token = null;
+            state.error = null;
+            state.loading = false;
+        }
     },
     extraReducers:{
         [signIn.pending.type]: (state) => {

@@ -30,8 +30,8 @@ Technologies in this project
 - [x] react-router handles public and private routes
 - [x] Ant design4 implements page componentized architecture
 - [x] i18n International processing
-- [ ] RESTful API to obtain back-end data
-- [ ] redux-persist for website state persistence
+- [x] RESTful API to obtain back-end data
+- [x] redux-persist for website state persistence
 - [ ] eject and configure Webpack Containerisation and Docker Deployment and Go Live
 
 

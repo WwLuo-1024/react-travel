@@ -42,6 +42,7 @@ Technologies in this project
 3. TypeScript 4.9.4
 4. Redux 4.2.0
 5. Antd 5.2.2
+6. i18n 12.2.0
 
 ## Usage
 

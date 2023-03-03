@@ -1,6 +1,6 @@
-# ALLWELL Online Travel
+# React Online Travel
 
-The ALLWELL Travel website is an online travel platform developed by React18. It aims to provide users with travel route planning (domestic and overseas), personalisation of private tours and so on. It also provides various information such as hotel photos, photos of sights, hotel phone numbers, hotel addresses and hotel reviews from real users to facilitate the user's choice.
+The React Travel website is an online travel platform developed by React18. It aims to provide users with travel route planning (domestic and overseas), personalisation of private tours and so on. It also provides various information such as hotel photos, photos of sights, hotel phone numbers, hotel addresses and hotel reviews from real users to facilitate the user's choice.
 <br />
 <br />
 Technologies in this project
@@ -42,6 +42,7 @@ Technologies in this project
 3. TypeScript 4.9.4
 4. Redux 4.2.0
 5. Antd 5.2.2
+6. i18n 12.2.0
 
 ## Usage
 
@@ -56,6 +57,11 @@ $ npm start
     <img src="demo/image001.png" width="800">
     <img src="demo/image002.png" width="800">
     <img src="demo/image003.png" width="800">
+    <img src="demo/image004.png" width="800">
+    <img src="demo/image005.png" width="800">
+    <img src="demo/image006.png" width="800">
+    <img src="demo/image007.png" width="800">
+    <img src="demo/image008.png" width="800">
 </div>
 
 <div align="center">Ongoing Updating</div>

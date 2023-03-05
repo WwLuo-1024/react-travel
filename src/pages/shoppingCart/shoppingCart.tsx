@@ -21,6 +21,7 @@ export const ShoppingCartPage: React.FC = () =>{
                     <Affix> 
                         <div className={styles["payment-card-container"]}>
                             {/* <PaymentCard /> */}
+                            购物车
                         </div>
                     </Affix>
                 </Col>    

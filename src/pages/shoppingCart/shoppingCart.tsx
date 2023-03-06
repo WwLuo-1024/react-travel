@@ -4,7 +4,8 @@ import { MainLayout } from "../../layouts/mainLayout";
 import { Row, Col, Affix } from 'antd';
 import { ProductList, PaymentCard } from "../../components";
 import { useSelector, useAppDispatch } from "../../redux/hooks";
-import { clearShoppingCartItem } from "../../redux/shoppingCart/slice";
+import { clearShoppingCartItem, checkout } from "../../redux/shoppingCart/slice";
+import { useNavigate } from 'react-router-dom'
 
 //私有路由嵌入用户JWT信息 用于判断是否登录 启动私有路由
 export const ShoppingCartPage: React.FC = () => {
@@ -13,7 +14,7 @@ export const ShoppingCartPage: React.FC = () => {
     const shoppingCartItems = useSelector(s => s.shoppingCart.items)
     const jwt = useSelector(s => s.user.token) as string
     const dispatch = useAppDispatch()
-
+    const navigate = useNavigate()
     console.log(shoppingCartItems)
 
     return (
@@ -39,7 +40,11 @@ export const ShoppingCartPage: React.FC = () => {
                                     s.originalPrice * (s.discountPresent ? s.discountPresent : 1))
                                     .reduce((a, b) => a + b, 0)}
                                 onCheckout={()=>{
-
+                                    if(shoppingCartItems.length <= 0){
+                                        return
+                                    }
+                                    dispatch(checkout(jwt))
+                                    navigate('/placeOrder')
                                 }}
                                 onShoppingCartClear={()=>{
                                     dispatch(clearShoppingCartItem({jwt, itemIds: shoppingCartItems.map(s=>s.id)}))

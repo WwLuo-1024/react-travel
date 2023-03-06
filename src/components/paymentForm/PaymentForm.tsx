@@ -20,7 +20,7 @@ export const PaymentForm = () => {
       className={styles["payment-credit-card"]}
     >
       <PaymentInputsWrapper {...wrapperProps}>
-        <svg {...getCardImageProps({ images })} />
+        {/* <svg {...getCardImageProps({ images })} /> */}
         <input {...getCardNumberProps()} />
         <input {...getExpiryDateProps()} />
         <input {...getCVCProps()} />

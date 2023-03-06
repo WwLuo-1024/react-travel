@@ -17,9 +17,11 @@ export const addShoppingCartItem = createAsyncThunk(
     "shoppingCart/addShoppingCartItem",
     async (parameters: {jwt: string, touristRouteId: string}, thunkAPI) => {
         const { data } = await axios.post(`http://123.56.149.216:8080/api/shoppingCart/items`,
+        // 请求主体body
         {
             touristRouteId: parameters.touristRouteId
         },
+    
         {
             headers:{
                 Authorization: `bearer ${parameters.jwt}`
@@ -51,6 +53,19 @@ export const clearShoppingCartItem = createAsyncThunk(
                 Authorization: `bearer ${parameters.jwt}`
             }
         });
+    }
+)
+
+export const checkout = createAsyncThunk(
+    "shoppingCart/checkout",
+    async (jwt: string, thunkAPI) => {
+        const { data } = await axios.post(`http://123.56.149.216:8080/api/shoppingCart/checkout`,
+        {
+            headers:{
+                Authorization: `bearer ${jwt}`
+            }
+        });
+        return data; //返回Promise
     }
 )
 
@@ -102,6 +117,20 @@ export const shoppingCartSlice = createSlice({
             state.error = null;
         },
         [clearShoppingCartItem.rejected.type]: (state, action: PayloadAction<string | null>) => {
+            state.loading = false;
+            state.error = action.payload;
+        },
+
+        [checkout.pending.type]: (state) => {
+            // return {...state, loading: true}; //通过展开操作符 利用state中的旧数据 创建一个全新的state对象 并且更新loading值 遵守了纯函数和immutable
+            state.loading = true; //immer处理方式 减少设计模式
+        },
+        [checkout.fulfilled.type]: (state, action) => {
+            state.items = [];
+            state.loading = false; //请求结束
+            state.error = null;
+        },
+        [checkout.rejected.type]: (state, action: PayloadAction<string | null>) => {
             state.loading = false;
             state.error = action.payload;
         },

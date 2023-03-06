@@ -1,6 +1,5 @@
 import React from "react";
-import styles from './placeOrder.module.css'
-import { PaymentForm, CheckOutCard } from "../../components";
+import { CheckOutCard } from "../../components";
 import { MainLayout } from "../../layouts/mainLayout";
 import { Row, Col } from 'antd'
 import { useSelector, useAppDispatch } from "../../redux/hooks";
@@ -17,7 +16,8 @@ export const PlaceOrder: React.FC = (props) =>{
         <MainLayout>
             <Row>
                 <Col span={12}>
-                    <PaymentForm />
+                    {/* <PaymentForm /> */}
+                    Payment method
                 </Col>
                 <Col span={12}>
                     <CheckOutCard 

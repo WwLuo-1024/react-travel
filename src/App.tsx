@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import styles from './App.module.css';
-import { HomePage, SignInPage, RegisterPage, DetailPage, SearchPage, ShoppingCartPage } from './pages';
+import { HomePage, SignInPage, RegisterPage, DetailPage, SearchPage, ShoppingCartPage, PlaceOrder } from './pages';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
 import { useSelector, useAppDispatch } from './redux/hooks';
@@ -36,6 +36,7 @@ function App() {
           <Route path='/shoppingCart' element={
             <PrivateRoute>
               <ShoppingCartPage />
+              <PlaceOrder />
             </PrivateRoute>
           } />
           {/*当页面url不存在时 输出以下页面 */}

@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import styles from './detailPage.module.css'
 import { useParams } from 'react-router-dom'
-import axios from "axios";
-import { Spin, Row, Col, DatePicker, Space, Divider, Typography, Anchor, Menu } from "antd";
-import { Header, Footer, ProductIntro, ProductComments } from "../../components";
+import { Spin, Row, Col, DatePicker, Divider, Typography, Anchor, Menu, Button } from "antd";
+import { ProductIntro, ProductComments } from "../../components";
 import { commentMockData } from "./mockup";
-import { productDetailSlice, getProductDetail } from "../../redux/productDetail/slice";
+import { getProductDetail } from "../../redux/productDetail/slice";
 import { useSelector, useAppDispatch } from "../../redux/hooks";
 import { MainLayout } from "../../layouts/mainLayout";
+import { ShoppingCartOutlined } from "@ant-design/icons";
+import { addShoppingCartItem } from "../../redux/shoppingCart/slice";
+import { use } from "i18next";
 // import { useDispatch } from "react-redux";
 
 //针对多参数传入 构建一下type
@@ -35,6 +37,9 @@ export const DetailPage: React.FC = () => {
     const product = useSelector(state => state.productDetail.data)
 
     const dispatch = useAppDispatch()
+
+    const jwt = useSelector(s=>s.user.token) as string
+    const shoppingCartLoading = useSelector(s=>s.shoppingCart.loading)
 
     useEffect(() => {
         // const fetchData = async () => {
@@ -83,6 +88,17 @@ export const DetailPage: React.FC = () => {
                             />
                         </Col>
                         <Col span={11}>
+                            <Button style={{marginTop:50, marginBottom:30, display:'block'}}
+                            type = "primary"
+                            danger
+                            loading = {shoppingCartLoading}
+                            onClick={()=>{
+                                dispatch(addShoppingCartItem({jwt, touristRouteId:product.id}))
+                            }}>
+                                {/* type意味有边框 */}
+                                <ShoppingCartOutlined />
+                                放入购物车
+                            </Button>
                             <RangePicker open style={{ marginTop: 20 }} />
                         </Col>
                     </Row>

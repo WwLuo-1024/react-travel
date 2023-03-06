@@ -32,7 +32,7 @@ Technologies in this project
 - [x] i18n International processing
 - [x] RESTful API to obtain back-end data
 - [x] redux-persist for website state persistence
-- [ ] eject and configure Webpack Containerisation and Docker Deployment and Go Live
+- [x] eject and configure Webpack Containerisation and Docker Deployment and Go Live
 
 
 ## Dev Environments

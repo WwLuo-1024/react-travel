@@ -9,7 +9,7 @@ interface orderState {
 }
 
 const initialState: orderState = {
-    loading: true,
+    loading: false,
     error: null,
     currentOrder: null
 }
@@ -18,12 +18,13 @@ export const placeOrder = createAsyncThunk(
     "order/placeOrder",
     async (parameter:{jwt: string, orderId: string}, thunkAPI) => {
         const { data } = await axios.post(
-            `http://123.56.149.216:8080/api/orders/${parameter.orderId}/placeOrder`,
-            null, {
+            `http://123.56.149.216:8080/api/orders/${parameter.orderId}/placeOrder`
+            , null, {
                 headers:{
                     Authorization: `bearer ${parameter.jwt}` 
                 },
             });
+        console.log("order data"+data)
         return data; //返回Promise
     }
 )

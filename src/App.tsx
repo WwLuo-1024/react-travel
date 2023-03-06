@@ -36,6 +36,10 @@ function App() {
           <Route path='/shoppingCart' element={
             <PrivateRoute>
               <ShoppingCartPage />
+            </PrivateRoute>
+          } />
+          <Route path='/placeOrder' element={
+            <PrivateRoute>
               <PlaceOrder />
             </PrivateRoute>
           } />
